@@ -1,0 +1,7 @@
+*.pyc
+*.pyo
+.kdev4
+*.kdev4
+*.egg-info
+deb_dist
+build
