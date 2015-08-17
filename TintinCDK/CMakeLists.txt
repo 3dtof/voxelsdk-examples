@@ -5,11 +5,12 @@ set(TINTINCDK_MINOR_VERSION 5)
 set(TINTINCDK_PATCH_VERSION 2)
 set(TINTINCDK_VERSION ${TINTINCDK_MAJOR_VERSION}.${TINTINCDK_MINOR_VERSION}.${TINTINCDK_PATCH_VERSION})
 
+FIND_PACKAGE(TI3DToF 0.5.2 REQUIRED)
+
 ### Do not export any symbol by default
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 include(GenerateExportHeader)
-
 
 set(CMAKE_INCLUDE_CURRENT_DIR 1)
 
@@ -41,13 +42,12 @@ ELSEIF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   
 endif()
 
-FIND_PACKAGE(TI3DToF 0.5.2 REQUIRED)
-
 add_library(tintincdk SHARED
   TintinCDKCamera.cpp
   TintinCDKCameraFactory.cpp
   TintinCDKDownloaderFactory.cpp
   TintinEEPROMDownloader.cpp
+  ${COMMON_LIB_FILES}
 )
 
 generate_export_header(tintincdk
